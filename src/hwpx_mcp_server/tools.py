@@ -1196,7 +1196,10 @@ def build_tool_definitions() -> List[ToolDefinition]:
                 category="pipeline",
             ),
         ])
-    selected_categories = _parse_toolset_env()
-    if selected_categories is None:
-        return tools
-    return [tool for tool in tools if tool.category in selected_categories]
+    keep_tools = {
+        'add_paragraph', 'add_table', 'get_table_cell_map', 'set_table_cell_text', 
+        'replace_table_region', 'merge_table_cells', 'split_table_cell', 'set_table_border_fill', 
+        'list_styles_and_bullets', 'ensure_run_style', 'apply_style_to_paragraphs', 
+        'apply_style_to_text_ranges'
+    }
+    return [tool for tool in tools if tool.name in keep_tools]

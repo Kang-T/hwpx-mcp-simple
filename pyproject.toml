@@ -38,6 +38,7 @@ Issues = "https://github.com/airmang/hwpx-mcp-server/issues"
 
 [project.scripts]
 "hwpx-mcp-server" = "hwpx_mcp_server.server:main"
+"hwpx-mcp-legacy" = "hwpx_mcp_server.legacy_server:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

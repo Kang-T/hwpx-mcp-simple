@@ -796,7 +796,7 @@ def hwpx_to_markdown(
     return result
 
 
-@mcp.tool()
+# @mcp.tool()
 def hwpx_to_html(
     hwpx_base64: str | None = None,
     url: str | None = None,
@@ -865,7 +865,7 @@ def hwpx_extract_json(
     return result
 
 
-@mcp.tool()
+# @mcp.tool()
 def get_paragraph_text(filename: str, paragraph_index: int) -> dict:
     """특정 문단 텍스트를 조회합니다."""
     path = resolve_path(filename)
@@ -877,7 +877,7 @@ def get_paragraph_text(filename: str, paragraph_index: int) -> dict:
     return {"paragraph_index": paragraph_index, "text": text}
 
 
-@mcp.tool()
+# @mcp.tool()
 def get_paragraphs_text(
     filename: str,
     start_index: int = 0,
@@ -909,7 +909,7 @@ def get_paragraphs_text(
     return {"paragraphs": picked, "truncated": truncated}
 
 
-@mcp.tool()
+# @mcp.tool()
 def find_text(filename: str, text_to_find: str, match_case: bool = True, max_results: int = 50) -> dict:
     """문서에서 텍스트를 검색합니다. 원본은 수정하지 않습니다."""
     path = resolve_path(filename)
@@ -927,7 +927,7 @@ def search_and_replace(filename: str, find_text: str, replace_text: str) -> dict
     return {"replaced_count": replaced_count, "find_text": find_text, "replace_text": replace_text}
 
 
-@mcp.tool()
+# @mcp.tool()
 def batch_replace(filename: str, replacements: list[dict[str, str]]) -> dict:
     """여러 치환 규칙을 순서대로 적용하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -937,7 +937,7 @@ def batch_replace(filename: str, replacements: list[dict[str, str]]) -> dict:
     return result
 
 
-@mcp.tool()
+# @mcp.tool()
 def add_heading(filename: str, text: str, level: int = 1) -> dict:
     """문서 끝에 제목 문단을 추가하고 즉시 저장합니다. level: 1~6"""
     path = resolve_path(filename)
@@ -947,7 +947,7 @@ def add_heading(filename: str, text: str, level: int = 1) -> dict:
     return {"paragraph_index": idx}
 
 
-@mcp.tool()
+# @mcp.tool()
 def add_paragraph(filename: str, text: str, style: str | None = None) -> dict:
     """문서 끝에 문단을 추가하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -957,7 +957,7 @@ def add_paragraph(filename: str, text: str, style: str | None = None) -> dict:
     return {"paragraph_index": idx}
 
 
-@mcp.tool()
+# @mcp.tool()
 def insert_paragraph(filename: str, paragraph_index: int, text: str, style: str | None = None) -> dict:
     """지정 위치 앞에 문단을 삽입하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -967,7 +967,7 @@ def insert_paragraph(filename: str, paragraph_index: int, text: str, style: str 
     return {"inserted_index": idx}
 
 
-@mcp.tool()
+# @mcp.tool()
 def delete_paragraph(filename: str, paragraph_index: int) -> dict:
     """지정 문단을 삭제하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -977,7 +977,7 @@ def delete_paragraph(filename: str, paragraph_index: int) -> dict:
     return {"deleted_index": paragraph_index, "remaining_paragraphs": remaining}
 
 
-@mcp.tool()
+# @mcp.tool()
 def add_table(filename: str, rows: int, cols: int, data: list[list[str]] = None) -> dict:
     """문서 끝에 표를 추가하고 즉시 저장합니다. data가 없으면 빈 표를 생성합니다."""
     path = resolve_path(filename)
@@ -987,7 +987,7 @@ def add_table(filename: str, rows: int, cols: int, data: list[list[str]] = None)
     return {"table_index": idx}
 
 
-@mcp.tool()
+# @mcp.tool()
 def get_table_text(filename: str, table_index: int = 0) -> dict:
     """표 셀 텍스트를 2D 배열로 조회합니다."""
     path = resolve_path(filename)
@@ -1001,7 +1001,7 @@ def get_table_text(filename: str, table_index: int = 0) -> dict:
     }
 
 
-@mcp.tool()
+# @mcp.tool()
 def get_table_map(filename: str) -> dict:
     """문서 내 표 위치, 크기, 문맥 요약을 조회합니다."""
     path = resolve_path(filename)
@@ -1009,7 +1009,7 @@ def get_table_map(filename: str) -> dict:
     return get_table_map_in_doc(doc)
 
 
-@mcp.tool()
+# @mcp.tool()
 def find_cell_by_label(filename: str, label_text: str, direction: str = "right") -> dict:
     """양식 문서에서 라벨 기준 인접 셀 후보를 조회합니다. direction: right 또는 down."""
     path = resolve_path(filename)
@@ -1018,7 +1018,7 @@ def find_cell_by_label(filename: str, label_text: str, direction: str = "right")
     return find_cell_by_label_in_doc(doc, label_text, direction=safe_direction)
 
 
-@mcp.tool()
+# @mcp.tool()
 def fill_by_path(filename: str, mappings: dict[str, str]) -> dict:
     """라벨 경로 문법으로 셀을 채우고 변경이 있으면 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1029,7 +1029,7 @@ def fill_by_path(filename: str, mappings: dict[str, str]) -> dict:
     return result
 
 
-@mcp.tool()
+# @mcp.tool()
 def set_table_cell_text(filename: str, table_index: int, row: int, col: int, text: str) -> dict:
     """표의 특정 셀 텍스트를 변경하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1039,7 +1039,7 @@ def set_table_cell_text(filename: str, table_index: int, row: int, col: int, tex
     return {"table_index": table_index, "row": row, "col": col, "text": text}
 
 
-@mcp.tool()
+# @mcp.tool()
 def add_page_break(filename: str) -> dict:
     """문서 끝에 페이지 나누기를 추가하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1049,7 +1049,7 @@ def add_page_break(filename: str) -> dict:
     return {"success": True}
 
 
-@mcp.tool()
+# @mcp.tool()
 def add_memo(filename: str, paragraph_index: int, text: str) -> dict:
     """문단에 메모를 추가하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1059,7 +1059,7 @@ def add_memo(filename: str, paragraph_index: int, text: str) -> dict:
     return {"memo_added": True, "paragraph_index": paragraph_index}
 
 
-@mcp.tool()
+# @mcp.tool()
 def remove_memo(filename: str, paragraph_index: int) -> dict:
     """문단의 메모를 제거하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1069,7 +1069,7 @@ def remove_memo(filename: str, paragraph_index: int) -> dict:
     return {"memo_removed": True, "paragraph_index": paragraph_index}
 
 
-@mcp.tool()
+# @mcp.tool()
 def list_available_documents(directory: str = ".") -> dict:
     """지정 디렉토리의 .hwpx 파일 목록을 조회합니다."""
     import glob
@@ -1089,7 +1089,7 @@ def list_available_documents(directory: str = ".") -> dict:
     return {"directory": directory, "documents": docs, "count": len(docs)}
 
 
-@mcp.tool()
+# @mcp.tool()
 def format_text(
     filename: str,
     paragraph_index: int,
@@ -1121,7 +1121,7 @@ def format_text(
     return {"formatted": True, "paragraph_index": paragraph_index, "range": [start_pos, end_pos]}
 
 
-@mcp.tool()
+# @mcp.tool()
 def create_custom_style(
     filename: str,
     style_name: str,
@@ -1147,7 +1147,7 @@ def create_custom_style(
     return result
 
 
-@mcp.tool()
+# @mcp.tool()
 def list_styles(filename: str) -> dict:
     """문서에 정의된 스타일 목록을 조회합니다."""
     path = resolve_path(filename)
@@ -1156,7 +1156,7 @@ def list_styles(filename: str) -> dict:
     return {"styles": styles, "count": len(styles)}
 
 
-@mcp.tool()
+# @mcp.tool()
 def merge_table_cells(
     filename: str,
     table_index: int,
@@ -1173,7 +1173,7 @@ def merge_table_cells(
     return {"merged": True, "range": f"({start_row},{start_col})~({end_row},{end_col})"}
 
 
-@mcp.tool()
+# @mcp.tool()
 def split_table_cell(filename: str, table_index: int, row: int, col: int) -> dict:
     """병합된 셀을 분할하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1183,7 +1183,7 @@ def split_table_cell(filename: str, table_index: int, row: int, col: int) -> dic
     return {"split": True, "original_span": span_info}
 
 
-@mcp.tool()
+# @mcp.tool()
 def format_table(filename: str, table_index: int, has_header_row: bool = None) -> dict:
     """표 서식을 적용하고 즉시 저장합니다."""
     path = resolve_path(filename)
@@ -1193,7 +1193,7 @@ def format_table(filename: str, table_index: int, has_header_row: bool = None) -
     return {"formatted": True, "table_index": table_index}
 
 
-@mcp.tool()
+# @mcp.tool()
 def copy_document(source_filename: str, destination_filename: str = None) -> dict:
     """HWPX 문서를 새 경로로 복사합니다. 원본은 유지됩니다."""
     source = resolve_path(source_filename)
@@ -1204,7 +1204,7 @@ def copy_document(source_filename: str, destination_filename: str = None) -> dic
     return {"source": source_filename, "destination": os.path.basename(dest)}
 
 
-@mcp.tool()
+# @mcp.tool()
 def analyze_form_fill(
     source_filename: str,
     input_json: dict = None,
@@ -1224,7 +1224,7 @@ def analyze_form_fill(
     )
 
 
-@mcp.tool()
+# @mcp.tool()
 def apply_form_fill(
     plan_id: str = None,
     analysis: dict = None,
@@ -1246,63 +1246,63 @@ def apply_form_fill(
 
 if _advanced_enabled():
 
-    @mcp.tool()
+    # @mcp.tool()
     def package_parts(filename: str) -> dict:
         """[고급] HWPX 패키지 파트 목록을 조회합니다."""
         path = resolve_path(filename)
         return _OPS.package_parts(path)
 
-    @mcp.tool()
+    # @mcp.tool()
     def package_get_xml(filename: str, part_name: str, max_chars: int = 5000) -> dict:
         """[고급] 특정 패키지 파트의 XML을 조회합니다."""
         path = resolve_path(filename)
         result = _OPS.package_get_xml(path, part_name)
         return truncate_response(result.get("xmlString", ""), max_chars=max_chars)
 
-    @mcp.tool()
+    # @mcp.tool()
     def package_get_text(filename: str, part_name: str, max_chars: int = 5000) -> dict:
         """[고급] 특정 패키지 파트의 텍스트를 조회합니다."""
         path = resolve_path(filename)
         result = _OPS.package_get_text(path, part_name)
         return truncate_response(result.get("text", ""), max_chars=max_chars)
 
-    @mcp.tool()
+    # @mcp.tool()
     def object_find_by_tag(filename: str, tag_name: str, max_results: int = 20) -> dict:
         """[고급] 문서 XML에서 태그를 검색합니다."""
         path = resolve_path(filename)
         return _OPS.object_find_by_tag(path, tag_name, max_results=max_results)
 
-    @mcp.tool()
+    # @mcp.tool()
     def object_find_by_attr(filename: str, attr_name: str, attr_value: str = None, max_results: int = 20) -> dict:
         """[고급] 문서 XML에서 속성을 검색합니다."""
         path = resolve_path(filename)
         return _OPS.object_find_by_attr(path, None, attr_name, attr_value, max_results=max_results)
 
-    @mcp.tool()
+    # @mcp.tool()
     def plan_edit(filename: str, instruction: str) -> dict:
         """[고급] instruction 기준 검증용 편집 계획을 생성합니다."""
         path = resolve_path(filename)
         operation = _build_verification_plan_operation(path, instruction)
         return _OPS.plan_edit(path=path, operations=[operation])
 
-    @mcp.tool()
+    # @mcp.tool()
     def preview_edit(filename: str, plan_id: str) -> dict:
         """[고급] plan_edit 결과 미리보기를 조회합니다."""
         del filename
         return _OPS.preview_edit(plan_id=plan_id)
 
-    @mcp.tool()
+    # @mcp.tool()
     def apply_edit(filename: str, plan_id: str) -> dict:
         """[고급] 검증 계획을 적용합니다. 원본 HWPX는 직접 수정하지 않습니다."""
         del filename
         return _OPS.apply_edit(plan_id=plan_id, confirm=True)
 
-    @mcp.tool()
+    # @mcp.tool()
     def validate_structure(filename: str) -> dict:
         """[고급] HWPX 구조 유효성을 검사합니다."""
         return _OPS.validate_structure(resolve_path(filename))
 
-    @mcp.tool()
+    # @mcp.tool()
     def lint_text_conventions(filename: str) -> dict:
         """[고급] 텍스트 규칙 위반 여부를 검사합니다."""
         return _OPS.lint_text_conventions(resolve_path(filename))
